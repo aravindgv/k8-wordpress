@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: wordpress-db
+spec:
+ replicas: 1
+ selector:
+   matchLabels:
+     appdb: wordpressdb
+ template:
+   metadata:
+     labels:
+       appdb: wordpressdb
+   spec:
+     containers:
+     - name: wordpress-db
+       image: mysql:5.7
+       ports:
+       - containerPort: 3306
+       env:
+       - name: MYSQL_ROOT_PASSWORD
+         value: somewordpress
+       - name: MYSQL_DATABASE
+         value: wordpress
+       - name: MYSQL_USER
+         value: wordpress
+       - name: MYSQL_PASSWORD
+         value: wordpress

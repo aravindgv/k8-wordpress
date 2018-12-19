@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpressdb
+  labels:
+    app: wordpressdb
+spec:
+  ports:
+  - port: 3306
+    protocol: TCP
+  selector:
+    appdb: wordpressdb
